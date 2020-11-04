@@ -23,6 +23,7 @@ function displayClock() {
     var dd = d.getDate();
     var min = (mins = ('0' + d.getMinutes()).slice(-2));
     var hh = d.getHours();
+    var ss = d.getSeconds();
     var ampm = '';
     
     if (format_12hour) {
@@ -30,9 +31,18 @@ function displayClock() {
         hh = hh % 12;
         hh = hh ? hh : 12; //show mod 0 as 12
     }
+
+    if (ss % 2 == 0)
+    {
+        document.getElementById('separator').innerHTML = "&nbsp:&nbsp";
+    }
+    else
+    {
+        document.getElementById('separator').innerHTML = "&nbsp&nbsp&nbsp"; // &nfsp is a must for multi white spaces 
+    }
   
     document.getElementById('hour').innerText = hh;
-    document.getElementById('separator').innerHTML = ' : ';
+    
     document.getElementById('minutes').innerText = min + ampm;
 
     document.getElementById('month').innerText = mm;
